@@ -1,4 +1,6 @@
 #!/bin/bash
+# Ensure local Python bin is on PATH
+export PATH="$PATH:/home/codespace/.local/bin"
 echo "🔧 Setting up Marine Troubleshooter environment..."
 
 sudo apt update -y
