@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marine Troubleshooter</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    input { width: 60%; padding: 8px; }
+    button { padding: 8px 15px; margin-left: 10px; }
+    pre { background: #f4f4f4; padding: 15px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>⚓ Shipboard Troubleshooting Assistant</h1>
+  <p>Describe a fault or alarm symptom:</p>
+  <input id="symptom" placeholder="e.g. Main engine lube oil pressure low">
+  <button onclick="askAI()">Diagnose</button>
+  <h3>Diagnosis & Checks:</h3>
+  <pre id="result"></pre>
+
+  <script>
+    async function askAI() {
+      const symptom = document.getElementById('symptom').value;
+      document.getElementById('result').textContent = "Analyzing...";
+      const res = await fetch('/troubleshoot', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({symptom})
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = data.advice;
+    }
+  </script>
+</body>
+</html>
