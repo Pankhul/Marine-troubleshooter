@@ -1,0 +1,12 @@
+{
+  "name": "Marine Troubleshooter",
+  "postCreateCommand": "bash setup.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "forwardPorts": [8000]
+}
